@@ -1916,22 +1916,22 @@
       document.getElementById('loginModal').style.display = 'block';
     }
 
-    function login() {
-      const username = document.getElementById('loginUsername').value.trim();
-      const password = document.getElementById('loginPassword').value.trim();
+function login() {
+  const username = document.getElementById('loginUsername').value.trim().toLowerCase(); // ✅ FORCE LOWERCASE
+  const password = document.getElementById('loginPassword').value.trim();
 
-      if (username === 'admin' && password === 'admin123') {
-        isLoggedIn = true;
-        closeModal('loginModal');
-        document.getElementById('shopView').style.display = 'none';
-        document.getElementById('dashboardView').style.display = 'block';
-        updateDashboardStats();
-        renderDashboard();
-        showToast('✓ Login successful! Welcome to the dashboard.', 'success');
-      } else {
-        showNotification('❌', 'Invalid credentials. Try: admin / admin123', 'error');
-      }
-    }
+  if (username === 'admin' && password === 'admin123') {
+    isLoggedIn = true;
+    closeModal('loginModal');
+    document.getElementById('shopView').style.display = 'none';
+    document.getElementById('dashboardView').style.display = 'block';
+    updateDashboardStats();
+    renderDashboard();
+    showToast('✓ Login successful! Welcome to the dashboard.', 'success');
+  } else {
+    showNotification('❌', 'Invalid credentials. Try: admin / admin123', 'error');
+  }
+}
 
     function logout() {
       showConfirmation('', 'Are you sure you want to logout?', () => {
